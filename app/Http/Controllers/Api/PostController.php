@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        $projects = Project::all();
+        // $projects = Project::all();
+        $projects = Project::paginate(2);
 
         return response()->json([
             "success"=> true,
