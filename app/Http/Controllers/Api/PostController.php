@@ -14,7 +14,7 @@ class PostController extends Controller
         // $projects = Project::paginate(2);
 
         // per ricevere i progetti  tutte le tecnologie e i tipi collegati
-        $projects = Project::with(['types', 'technologies'])->paginate(2);
+        $projects = Project::with(['type', 'technologies'])->paginate(2);
 
         return response()->json([
             "success" => true,
