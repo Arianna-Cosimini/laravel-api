@@ -11,7 +11,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{$project->name}}</h5>
                 <p class="card-text">{{$project->description}}</p>
-                <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-info">Visualizza progetto</a>            
+                <a href="{{route('admin.projects.show', $project)}}" class="btn btn-info">Visualizza progetto</a>            
             </div>
         </div>
         @endforeach

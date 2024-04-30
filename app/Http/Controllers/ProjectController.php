@@ -9,6 +9,8 @@ use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Str;
+
 class ProjectController extends Controller
 {
     /**
@@ -42,14 +44,16 @@ class ProjectController extends Controller
 
         $newProject = new Project();
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
 
-           $image_path = Storage::disk('public')->put('project_img', $request->image);
-    
+            $image_path = Storage::disk('public')->put('project_img', $request->image);
+
             $newProject->image = $image_path;
         }
 
         $newProject->fill($request->all());
+
+        $newProject->slug = Str::slug($newProject->name);
 
         $newProject->save();
 
@@ -85,14 +89,16 @@ class ProjectController extends Controller
     {
         $request->validated();
 
-        if($request->hasFile('image')) {
-            
+        if ($request->hasFile('image')) {
+
             $image_path = Storage::disk('public')->put('project_img', $request->image);
-     
-             $project->image = $image_path;
-         }
+
+            $project->image = $image_path;
+        }
 
         $project->fill($request->all());
+
+        $project->slug = Str::slug($project->name);
 
         $project->save();
 

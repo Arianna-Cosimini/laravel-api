@@ -32,18 +32,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::middleware(['auth', 'verified'])
-        ->name('admin.')
-        ->prefix('admin')
-        ->group(function() {               
+    ->name('admin.')
+    ->prefix('admin')
+    ->group(
+        function () {
             Route::get('/', [DashboardController::class, 'index'])->name('index');
 
-            Route::resource('projects', ProjectController::class);
+            Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
 
             Route::resource('types', TypeController::class);
 
             Route::resource('technologies', TechnologyController::class);
         }
-);
+    );
