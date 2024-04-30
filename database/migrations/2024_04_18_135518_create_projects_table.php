@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->text('technology');
             $table->text('repo_links');
             $table->timestamps();
