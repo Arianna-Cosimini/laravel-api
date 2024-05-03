@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\LeadController;
 use App\Http\Controllers\Api\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ Route::get('/projects', [PostController::class, 'index']);
 
 //rotta per la show singola
 Route::get('/projects/{slug}', [PostController::class, 'show']);
+
+Route::post('/newcontact', [LeadController::class, 'store']);
